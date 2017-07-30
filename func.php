@@ -42,9 +42,14 @@ if(!function_exists('str_getcsv_array')) {
 		return $array;
 	}
 }
+
+
 // ini_set("register_argc_argv", "On");
 function console($v1 = null, $v2 = null, $v3 = null, $v4 = null, $v5 = null)
 {
+
+	if ( !DEBUG ) return;
+
 	if ( !isset($argv) )
 	{
 		$argv = array();

@@ -14,6 +14,7 @@
 date_default_timezone_set("Europe/Berlin");
 error_reporting(-1);
 ini_set('display_errors', preg_match("localhost", $_SERVER["SERVER_NAME"]) ? 'On' : 'Off');
+define("DEBUG", false);
 
 require("config.php");
 require("reddit.php");
