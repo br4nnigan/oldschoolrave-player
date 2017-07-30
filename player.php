@@ -363,7 +363,7 @@ class player {
 	{
 return <<<HTML
 		<iframe id='player' width='640' height='360' src='http://www.youtube.com/embed?playlist=" . $this->youtube->playlist_id. "&enablejsapi=1' frameborder='0' allowfullscreen></iframe>
-HTML>
+HTML;
 	}
 
 	private function _get_playlist_html_generated( $years, $genres, $page )
