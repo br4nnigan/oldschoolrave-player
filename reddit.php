@@ -2,9 +2,14 @@
 
 class reddit {
 
-	private $cache_file = 'cache/new.json';
+	private $cache_file = "";
 	private $cache_life = '3600'; //caching time, in seconds
 	private $update_url = "https://www.reddit.com/r/oldskoolrave/new/.json?limit=25";
+
+	function __construct()
+	{
+		$this->cache_file = __DIR__ . "/cache/new.json";
+	}
 
 	public function get_latest_youtube_videos()
 	{

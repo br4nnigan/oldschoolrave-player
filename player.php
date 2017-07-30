@@ -15,10 +15,12 @@ class player {
 	private $_pages_total = -1;
 	private $_videos_total = -1;
 
-	private $csv_file = "cache/playlistitems.csv";
+	private $csv_file = "";
 
 	function __construct( $config )
 	{
+		$this->csv_file = __DIR__ . "/cache/playlistitems.csv";
+
 		session_start();
 		$this->_config = $config;
 	}
