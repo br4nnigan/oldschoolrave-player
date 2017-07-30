@@ -51,9 +51,6 @@ for ($i=$set_year_from; $i <= $set_year_to; $i++)
 	array_push($set_years, $i);
 }
 
-console($set_years);
-
-
 // get filtered playlist html
 $playlist_html = $player->get_playlist_html( $set_years, $set_genres, $set_page );
 
@@ -146,6 +143,7 @@ foreach ($genres as $genre => $number )
 <script type="text/javascript">
 
 	var videos = <?= json_encode($videos_all); ?>;
+	var titleScrollInt = null;
 	console.log("videos", videos);
 	var a = document.querySelector("a.reddit");
 	var c = document.querySelector("#comments");
@@ -157,15 +155,18 @@ foreach ($genres as $genre => $number )
 				},
 				onStateChange: function (state) {
 					if ( state.data === 1 ) {
+
 						var videoData = state.target.getVideoData();
 						if ( videoData && Array.isArray(videos) ) {
+
 							videos.map(function (video) {
-								console.log('test', video.id , videoData.video_id);
+
 								if ( video.id == videoData.video_id && a ) {
-									console.log("palying: ", video);
+
 									c.style.display = "";
 									a.setAttribute("href", "https://reddit.com/r/oldskoolrave/"+video.id_reddit);
-									a.innerHTML = "reddit comments";
+
+									setTitle(videoData.title);
 								}
 							});
 						}
@@ -173,7 +174,16 @@ foreach ($genres as $genre => $number )
 				}
 			}
 		});
+
+		function setTitle(value) {
+			var t = document.querySelector("title");
+				t.innerHTML = "OLD SKOOL RAVE PLAYER " + value + " ";
+			if ( !titleScrollInt ) titleScrollInt = setInterval(function () {
+				t.innerHTML = t.innerHTML.substr(1) + t.innerHTML.substr(0, 1);
+			}, 250);
+		}
 	}
+
 </script>
 </body>
 </html>
