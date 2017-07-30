@@ -69,7 +69,7 @@ else
 }
 ?>
 
-<div id="comments" style="display: none"><a href="" class="reddit"></a> of current video</div>
+<div id="comments" style="display: none"><a href="" target="_blank" class="reddit">reddit comments</a> of current video</div>
 
 
 
