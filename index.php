@@ -150,8 +150,11 @@ foreach ($genres as $genre => $number )
 	var a = document.querySelector("a.reddit");
 	var c = document.querySelector("#comments");
 	function onYouTubeIframeAPIReady (pid) {
-		new YT.Player(document.querySelector("iframe"), {
+		var player = new YT.Player(document.querySelector("iframe"), {
 			events: {
+				onError: function (err) {
+					player.nextVideo()
+				},
 				onStateChange: function (state) {
 					if ( state.data === 1 ) {
 						var videoData = state.target.getVideoData();
